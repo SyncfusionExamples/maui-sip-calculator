@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sliders="clr-namespace:Syncfusion.Maui.Sliders;assembly=Syncfusion.Maui.Sliders"
+             xmlns:gauge="clr-namespace:Syncfusion.Maui.Gauges;assembly=Syncfusion.Maui.Gauges"
+             xmlns:local="clr-namespace:SIPCalculator.ViewModel"
+             x:Class="SIPCalculator.MainPage"
+             BackgroundColor="White"
+             Title="SIP Calculator">
+
+    <ContentPage.BindingContext>
+        <local:ViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid ColumnDefinitions="*,*">
+                <Grid RowDefinitions="50,80,50,80,50,80,50,50,50"
+                      Grid.Column="0">
+
+                    <Grid ColumnDefinitions="*,*"
+                          Grid.Row="0">
+                        <Label Text="Monthly Investment"
+                               TextColor="Black"
+                               Grid.Column="0"
+                               Padding="25,30,0,0" />
+
+                        <Entry WidthRequest="100"
+                               HeightRequest="30"
+                               Grid.Column="1"
+                               HorizontalOptions="End"
+                               VerticalOptions="End"
+                               Placeholder="10000"
+                               IsEnabled="False"
+                               TextColor="Green"
+                               Text="{Binding Value, Source={x:Reference InvestSlider},StringFormat=' $ {0:0}'}"
+                               BackgroundColor="#e5faf5" />
+                    </Grid>
+
+                    <sliders:SfSlider x:Name="InvestSlider"
+                                      Minimum="500"
+                                      Maximum="100000"
+                                      Value="{Binding MonthlyInvestment}"
+                                      Grid.Row="1">
+                        <sliders:SfSlider.TrackStyle>
+                            <sliders:SliderTrackStyle ActiveFill="#00d09c"
+                                                      InactiveFill="#ecedef"
+                                                      ActiveSize="5"
+                                                      InactiveSize="5" />
+                        </sliders:SfSlider.TrackStyle>
+                        <sliders:SfSlider.ThumbStyle>
+                            <sliders:SliderThumbStyle Fill="White"
+                                                      Radius="15"
+                                                      Stroke="Grey"
+                                                      StrokeThickness=".5" />
+                        </sliders:SfSlider.ThumbStyle>
+                        <sliders:SfSlider.ThumbOverlayStyle>
+                            <sliders:SliderThumbOverlayStyle Radius="15" />
+                        </sliders:SfSlider.ThumbOverlayStyle>
+                    </sliders:SfSlider>
+
+                    <Grid ColumnDefinitions="*,*"
+                          Grid.Row="2">
+
+                        <Label Text="Expected return rate (p.a)"
+                               TextColor="Black"
+                               Grid.Column="0"
+                               Padding="25,30,0,0" />
+
+                        <Entry WidthRequest="100"
+                               HeightRequest="30"
+                               Grid.Column="1"
+                               HorizontalOptions="End"
+                               VerticalOptions="End"
+                               IsEnabled="False"
+                               Placeholder="12 %"
+                               TextColor="Green"
+                               Text="{Binding Value, Source={x:Reference RateSlider}, StringFormat=' {0:0.0}'}"
+                               BackgroundColor="#e5faf5" />
+                    </Grid>
+
+                    <sliders:SfSlider x:Name="RateSlider"
+                                      Minimum="1"
+                                      Maximum="30"
+                                      Value="{Binding ExpectedReturnRate}"
+                                      Grid.Row="3">
+                        <sliders:SfSlider.TrackStyle>
+                            <sliders:SliderTrackStyle ActiveFill="#00d09c"
+                                                      InactiveFill="#ecedef"
+                                                      ActiveSize="5"
+                                                      InactiveSize="5" />
+                        </sliders:SfSlider.TrackStyle>
+                        <sliders:SfSlider.ThumbStyle>
+                            <sliders:SliderThumbStyle Fill="White"
+                                                      Radius="15"
+                                                      Stroke="Grey"
+                                                      StrokeThickness=".5" />
+                        </sliders:SfSlider.ThumbStyle>
+                        <sliders:SfSlider.ThumbOverlayStyle>
+                            <sliders:SliderThumbOverlayStyle Radius="15" />
+                        </sliders:SfSlider.ThumbOverlayStyle>
+                    </sliders:SfSlider>
+
+                    <Grid ColumnDefinitions="*,*"
+                          Grid.Row="4">
+
+                        <Label Text="Time period"
+                               TextColor="Black"
+                               Grid.Column="0"
+                               Padding="25,30,0,0" />
+
+                        <Entry WidthRequest="100"
+                               HeightRequest="30"
+                               Grid.Column="1"
+                               IsEnabled="False"
+                               HorizontalOptions="End"
+                               VerticalOptions="End"
+                               Placeholder="10 Yr"
+                               TextColor="Green"
+                               Text="{Binding Value, Source={x:Reference TimePeroidSlider}, StringFormat=' {0:0}'}"
+                               BackgroundColor="#e5faf5" />
+                    </Grid>
+
+                    <sliders:SfSlider x:Name="TimePeroidSlider"
+                                      Minimum="1"
+                                      Maximum="30"
+                                      Value="{Binding TimePeriod}"
+                                      Interval="1"
+                                      Grid.Row="5">
+                        <sliders:SfSlider.TrackStyle>
+                            <sliders:SliderTrackStyle ActiveFill="#00d09c"
+                                                      InactiveFill="#ecedef"
+                                                      ActiveSize="5"
+                                                      InactiveSize="5" />
+                        </sliders:SfSlider.TrackStyle>
+                        <sliders:SfSlider.ThumbStyle>
+                            <sliders:SliderThumbStyle Fill="White"
+                                                      Radius="15"
+                                                      Stroke="Grey"
+                                                      StrokeThickness=".5" />
+                        </sliders:SfSlider.ThumbStyle>
+                        <sliders:SfSlider.ThumbOverlayStyle>
+                            <sliders:SliderThumbOverlayStyle Radius="15" />
+                        </sliders:SfSlider.ThumbOverlayStyle>
+                    </sliders:SfSlider>
+
+                    <Grid ColumnDefinitions="*,*"
+                          Grid.Row="6">
+                        <Label Text="Invested amount"
+                               TextColor="Black"
+                               Grid.Column="0"
+                               Padding="25,30,0,0" />
+
+                        <Label WidthRequest="100"
+                               HeightRequest="30"
+                               Grid.Column="1"
+                               TextColor="Black"
+                               HorizontalOptions="End"
+                               VerticalOptions="End"
+                               Text="{Binding InvestedAmount, StringFormat=' $ {0:0}'}" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*"
+                          Grid.Row="7">
+                        <Label Text="Est. returns"
+                               TextColor="Black"
+                               Grid.Column="0"
+                               Padding="25,30,0,0" />
+
+                        <Label WidthRequest="100"
+                               HeightRequest="30"
+                               Grid.Column="1"
+                               TextColor="Black"
+                               HorizontalOptions="End"
+                               VerticalOptions="End"
+                               Text="{Binding Result, StringFormat=' $ {0:0}'}" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*"
+                          Grid.Row="8">
+                        <Label Text="Total value"
+                               TextColor="Black"
+                               Grid.Column="0"
+                               Padding="25,30,0,0" />
+
+                        <Label WidthRequest="100"
+                               HeightRequest="30"
+                               Grid.Column="1"
+                               TextColor="Black"
+                               HorizontalOptions="End"
+                               VerticalOptions="End"
+                               Text="{Binding TotalInvetment, StringFormat=' $ {0:0}'}" />
+                    </Grid>
+                </Grid>
+                <Grid RowDefinitions="100,350"
+                      Grid.Column="1">
+                    <Grid ColumnDefinitions="80,80,80,80"
+                          HorizontalOptions="Center"
+                          Grid.Row="0">
+                        <Border Stroke="White"
+                                StrokeThickness="2"
+                                HeightRequest="15"
+                                WidthRequest="25"
+                                BackgroundColor="#98a4ff">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="40,40,40,40" />
+                            </Border.StrokeShape>
+                        </Border>
+                        <Label Text="Invested Amount"
+                               TextColor="Grey"
+                               Padding="0,30,0,0"
+                               Grid.Column="1" />
+                        <Border Stroke="White"
+                                Grid.Column="2"
+                                StrokeThickness="2"
+                                HeightRequest="15"
+                                WidthRequest="25"
+                                BackgroundColor="#5367ff">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="40,40,40,40" />
+                            </Border.StrokeShape>
+                        </Border>
+                        <Label Text="Estd. returns"
+                               TextColor="Grey"
+                               Grid.Column="3"
+                               Padding="0,30,0,0" />
+                    </Grid>
+                    <gauge:SfRadialGauge Grid.Row="1">
+                        <gauge:SfRadialGauge.Axes>
+                            <gauge:RadialAxis Minimum="1"
+                                              Maximum="30"
+                                              Interval="1"
+                                              Margin="20,10,0,0"
+                                              StartAngle="270"
+                                              EndAngle="270"
+                                              RadiusFactor=".9"
+                                              ShowLabels="False"
+                                              ShowTicks="False">
+                                <gauge:RadialAxis.AxisLineStyle>
+                                    <gauge:RadialLineStyle ThicknessUnit="Pixel"
+                                                           Thickness="50" />
+                                </gauge:RadialAxis.AxisLineStyle>
+
+                                <gauge:RadialAxis.Ranges>
+                                    <gauge:RadialRange StartValue="0"
+                                                       EndValue="30"
+                                                       StartWidth="50"
+                                                       EndWidth="50"
+                                                       Fill="#98a4ff" />
+                                    <gauge:RadialRange StartValue="0"
+                                                       EndValue="17"
+                                                       StartWidth="50"
+                                                       EndWidth="50"
+                                                       Fill="#98a4ff" />
+                                    <gauge:RadialRange StartValue="{Binding ExpectedReturnRate}"
+                                                       EndValue="30"
+                                                       StartWidth="50"
+                                                       EndWidth="50"
+                                                       Fill="#5367ff" />
+                                </gauge:RadialAxis.Ranges>
+                            </gauge:RadialAxis>
+                        </gauge:SfRadialGauge.Axes>
+
+                    </gauge:SfRadialGauge>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
